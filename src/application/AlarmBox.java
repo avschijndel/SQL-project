@@ -13,7 +13,8 @@ public class AlarmBox {
 		Stage window = new Stage();
 		window.initModality(Modality.APPLICATION_MODAL);
 		window.setTitle(title);
-		window.setMinWidth(250);
+		window.setMinWidth(400);
+		window.setMinHeight(250);
 		window.setMaxHeight(500);
 		
 		VBox layout = new VBox(10);
@@ -24,7 +25,6 @@ public class AlarmBox {
 		
 		layout.getChildren().addAll(msgText, closeButton);
 		layout.setAlignment(Pos.CENTER);
-		
 		
 		Scene scene = new Scene(layout);
 		window.setScene(scene);

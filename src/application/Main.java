@@ -37,6 +37,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
 	static ToggleGroup versieToggle = new ToggleGroup();
 	static Label lblVersie, lblServer;
 	static StringProperty versieLabel = new SimpleStringProperty();
+	static String loginName, loginPassword;
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -51,7 +52,16 @@ public class Main extends Application implements EventHandler<ActionEvent> {
 			
 			
 			window.setScene(scene);
-			window.show();
+			
+			//Login window:
+			if(!LoginScreen.display()) {
+				window.close();
+			} else {
+				loginName = LoginScreen.getUsername();
+				loginPassword = LoginScreen.getPassword();
+				window.show();
+			}
+			
 		} catch(Exception e) {
 			e.printStackTrace(); 
 		}
