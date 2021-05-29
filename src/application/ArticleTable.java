@@ -59,7 +59,6 @@ public class ArticleTable {
 		table.setItems(getArticle());
 		table.getColumns().addAll(codeColumn, nameColumn, typeColumn);
 		
-//		codeColumn.addEventHandler(arg0, arg1);
 		table.getSelectionModel().selectedItemProperty().addListener((obs, oldValue, newValue) -> {
 			if(copyChoice.isSelected()) {
 				System.out.println(table.getSelectionModel().getSelectedItem().getCode());

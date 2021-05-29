@@ -7,5 +7,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX"/>
+	<classpathentry kind="lib" path="C:/Program Files/SQL server/sqljdbc_9.2/enu/mssql-jdbc-9.2.1.jre8.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/SQL server/sqljdbc_9.2/enu/mssql-jdbc-9.2.1.jre11.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/SQL server/sqljdbc_9.2/enu/mssql-jdbc-9.2.1.jre15.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

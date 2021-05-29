@@ -9,7 +9,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -20,6 +19,8 @@ public class LoginScreen {
 	static TextField tfUsername, tfPass;
 	static Button loginButton, cancelButton;
 	static Label loginLabel;
+	static Boolean closeRequest = false;
+
 	
 	public static Boolean display() {
 		Stage window = new Stage();
@@ -27,6 +28,7 @@ public class LoginScreen {
 		window.setTitle("Login");
 		window.setMinWidth(400);
 		window.setMinHeight(400);
+		window.setOnCloseRequest(e -> cancelButton.fire());
 		
 		//Root into Stage
 		VBox root = new VBox(10);
@@ -70,7 +72,7 @@ public class LoginScreen {
 				username = tfUsername.getText().trim();
 				password = tfPass.getText().trim();
 				
-				if(username.equals("Alain") && password.equals("Alain")) {
+				if(username.equals(password)) {
 					System.out.println("Login successful");
 					loginSuccess = true;
 					window.close();
@@ -88,10 +90,13 @@ public class LoginScreen {
 			}
 		});
 		
+		
 		cancelButton = new Button("Cancel");
 		cancelButton.setOnAction(e -> {
 			loginSuccess = false;
+			closeRequest = true;
 			window.close();
+			Main.getWindow().close();
 		});
 		buttonBox.getChildren().addAll(loginButton, cancelButton);
 		buttonBox.setAlignment(Pos.CENTER);
@@ -99,7 +104,7 @@ public class LoginScreen {
 		//Login label for warnings
 		HBox loginLabelContainer = new HBox();
 		loginLabel = new Label("");
-		loginLabel.setStyle("-fx-text-color: red");
+		loginLabel.setStyle("-fx-text-fill: red;");
 		loginLabelContainer.getChildren().add(loginLabel);
 		loginLabelContainer.setAlignment(Pos.CENTER);
 		
@@ -116,6 +121,11 @@ public class LoginScreen {
 		return loginSuccess;
 	}
 	
+	//Getters and setters
+	public static Boolean getLoginSuccess() {
+		return loginSuccess;
+	}
+
 	public static String getUsername() {
 		return username;
 	}
@@ -123,4 +133,18 @@ public class LoginScreen {
 	public static String getPassword() {
 		return password;
 	}
+
+	public static Boolean getCloseRequest() {
+		return closeRequest;
+	}
+
+	public static void setCloseRequest(Boolean closeRequest) {
+	}
+
+	public static void setLoginSuccess(Boolean loginSuccess) {
+		LoginScreen.loginSuccess = loginSuccess;
+	}
+	
+	
+	
 }
